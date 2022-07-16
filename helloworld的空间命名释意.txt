@@ -1,0 +1,179 @@
+#include<iostream>
+
+//空间的命名：
+//在c语言中：
+//#include<stdio.h>
+//int main()
+//{
+//	int rand = 1;
+//	printf("%d\n", rand);//1
+//	return 0;
+//}
+//对于这样的代码会打印1
+//但是，如果给他加上：#inlcude<stdlib.h> 头文件，则会报错（rand是stdlib的随机数函数）
+//c++ ,为了解决命名冲突的问题，提出了 命名空间 的概念。即：namespace的作用
+//
+//namespace 的作用：
+//	要区分不同的区域，我们就要为每个域都定义自己的名字。
+//	namespace这个关键字就起这个作用
+//
+//namespace的用法：
+//
+//        namespace N1
+//        {
+//            //支持变量
+//            int a = 1;
+//            //支持函数
+//            int f()
+//            {
+//                return 1;
+//            }
+//            //支持结构体/类
+//            struct S
+//            {
+//            int _s;
+//            }
+//        }
+//
+//像这样，namespace 后边跟命名空间的名字，再接一对{}，即可，{}里面放命名空间的成员
+//
+//空间命名支持嵌套：
+//如:
+//namespace N2
+//{
+//    int a;
+//    int f();
+//    namespace N3
+//    {
+//        int b;
+//
+//    }
+//
+//}
+//
+//同名融合：
+//        同一个工程中，允许存在多个相同名称的命名空间，编译器最后会把他们合成一个命名空间。
+//    如;
+//namespace N4
+//{
+//    int a;
+//}
+//namespace N4
+//{
+//    int b;
+//}
+//
+//编译器会处理成：
+//
+//namespace N4
+//{
+//    int a;
+//    int b;
+//}
+//
+//命名空间的使用：
+//方法一：
+//使用 using namespace 命名空间名称引入
+//    如：using namespace std;
+//    这里的std其实就是个 命名空间标示符 ，C++标准库中的 函数 或者 对象 都是在命名空间std中定义的。
+//    这里使用了using namespace N;将于域中的变量都释放于全局区，也就相当于俩全局变量（注：释放前也是全局变量，只不过受命名空间域的限制）
+//    如案例1：
+//    #include<stdio.h>
+//    namespace N
+//    {
+//       int a = 10;
+//        int b = 20;
+//    }
+//    using namespace N;
+//    int main()
+//    {
+//      printf("%d\n", a); // 正常打印
+//     return 0;
+//    }
+//    不足：这种方式虽然最为方便，但危险性也是最高的，不管会不会用到，都会放出来，发生命名冲突的的可能性也更高。
+//
+//方法二：
+//    使用using将命名空间的成员引入
+//    有时我们写 using namespace std; 也只为了使用cin、cout和endl，所以我们不妨只将cin、cout和endl放出来,语法如下：
+//    using std::cin;
+//    using std::cout;
+//    using std::endl;
+//    如：
+//    using N::b;
+//    int main()
+//    {
+//	    printf("%d\n", b);
+//	    return 0; 
+//    }
+//
+//方法三：
+//    在使用方式3之前，我们要先看一下 域作用限定符 （：：俩冒号）的概念：
+//    对于c语言：
+//
+//    #include<stdio.h>//全局变量和局部变量两个 a,
+//    int a = 0;
+//    int main()
+//    {
+//      int a = 1;
+//     printf("%d\n",a);
+//     return 0;
+//    }
+//
+//    这里的两个a一个是全局变量，一个是局部变量，并不会发生访问冲突，再不做任何操作的条件下，会默认访问局部变量。
+//    如果想访问全局域的那个a，只需要在前面加一个域作用限定符::(俩冒号)
+//    如：
+//    #include <iostream>
+//    using namespace std;
+//    int a = 0;
+//    int main()
+//    {
+//        int a = 1;
+//        printf("访问局部变量(a)：%d\n",a);
+//        printf("访问全局变量(::a)：%d\n",::a);
+//        return 0;
+//    }
+//
+//    还是上面的代码，如果a前面啥也没有，默认访问局部变量；
+//    前面加上 :: ，访问全局变量；那么在::前面再加一个命名空间名呢？
+//    顺理成章的，第三种访问方式产生了
+//
+//    如：
+//    #include <iostream>
+//    using namespace std;
+//     main()
+//    {
+//        cout << 1 << endl;
+//    }
+//    可改成：
+//    #include <iostream>
+//    int main()
+//    {
+//        std::cout << 1<< std::endl;
+//    }
+//
+//    又如：
+//    #include<stdio.h>
+//    namespace N
+//    {
+//        int a = 10;
+//        int b = 20;
+//    }
+//    int main()
+//    {
+//        printf("%d\n", N::a); // 正常打印
+//        return 0;
+//    }
+
+
+
+//头文件
+using namespace std;
+int main()
+{
+	std::cout << "helloworld!" << std::endl;//打印helloworld：std::cout << "helloworld!" << std::endl;
+	/*>> 运算符，用来从一个istream对象读取输入数据；
+	<< 运算符，用来向一个ostream对象写入输出数据；*/
+
+
+	return 0;
+}
