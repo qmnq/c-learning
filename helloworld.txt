@@ -1,0 +1,6 @@
+#include<iostream>//头文件
+int main()
+{
+	std::cout << "helloworld!" << std::endl;//打印helloworld：std::cout << "helloworld!" << std::endl;
+	return 0;
+}
