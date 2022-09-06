@@ -1,0 +1,18 @@
+#include<iostream>
+using namespace std;
+//1.2注释
+//1.3变量定义
+/*1.4常量：
+		1.#define宏常量：#define Day 7
+		2.const 修饰的变量：const int a = 10;(不可修改)
+*/
+#define Day 7
+int main()
+{
+	cout << "一周有：" << Day << "天" << endl;//自带'\n'
+	const int month = 12;
+	cout << "一年有：" << month << "个月" << endl;
+
+	system("pause");
+	return 0;
+}

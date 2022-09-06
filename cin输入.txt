@@ -1,0 +1,41 @@
+#include<iostream>
+#include<string>
+using namespace std;
+//数据的输入赋值：
+	//关键字;cin
+	//语法：cin>>a;
+#define Day 7
+int main()
+{
+	
+	//1.整型
+	/*int a = 0;
+	cout << "请输入整型的值:" << endl;
+	cin >> a;
+	cout << "整型a的值是：" << a << endl;*/
+
+	//2.浮点型
+	/*float a = 3.14f;
+	cout << "请输入浮点型的值:" << endl;
+	cin >> a;
+	cout << "浮点型a的值是：" << a << endl;*/
+
+	//3.字符型
+	/*char a = 'a';
+	cout << "请输入字符型的值:" << endl;
+	cin >> a;
+	cout << "字符型a的值是：" << a << endl;*/
+
+	//4.字符串型(要引用)头文件：#include<string>
+	/*string a = "hello";
+	cout << "请输入字符串型的值:" << endl;
+	cin >> a;
+	cout << "字符串型a的值是：" << a << endl;*/
+	//5.布尔类型
+	bool flag = false;
+	cout << "请给bool类型赋值:" << endl;
+	cin >> flag;
+	cout << "bool类型的值是：" << flag << endl;
+	system("pause");
+	return 0;
+}

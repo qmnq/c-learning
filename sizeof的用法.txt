@@ -1,0 +1,14 @@
+#include<iostream>
+using namespace std;
+/*
+sizeof 求数据类型占内存的大小
+语法：sizeof(数据类型/变量)*/
+#define Day 7
+int main()
+{
+	short a = 10;
+	cout << "short 所占用的内存： " << sizeof(a) << endl;
+
+	system("pause");
+	return 0;
+}
