@@ -4,6 +4,7 @@ using namespace std;
 int* func()
 {
 	//利用new关键字 可以将数据开辟到堆区
+	//指针p本质上还是一个局部变量，放在栈上。实际上是将堆区的地址编号用栈区的p存放
 	int* p = new int(10);
 	return p;
 }
@@ -12,5 +13,6 @@ int main()
 	//在堆区开辟数据空间
 	int* c = func();
 	cout << *c << endl;
+	system("pause");
 	return 0;
 }

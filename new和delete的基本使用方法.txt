@@ -1,0 +1,21 @@
+#include<iostream>
+using namespace std;
+int* func()
+{
+	int* p = new int(10);
+	return p;
+}
+
+int main()
+{
+	//在堆区开辟空间
+	int* p = func();
+	cout << *p << endl;
+	cout << *p << endl;
+
+	//删除开辟的空间
+	delete p;
+	cout << *p << endl;
+	system("pause");
+	return 0;
+}
