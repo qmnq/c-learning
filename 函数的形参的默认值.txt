@@ -1,0 +1,27 @@
+#include<iostream>
+using namespace std;
+
+//函数默认参数
+
+//如果我们自己传入数据，就用我们自己的数据，如果没有，就是用默认值
+//语法：返回值类型 函数名（形参 = 默认值）{}
+//注意事项
+//	1.如果某个位置已经有了默认值，则从这个位置往后，从左到右都必须有默认值
+//2.如果函数声明有默认参数，函数的实现就不能有默认参数
+//	声明和实现只能有一个有默认参数
+/*如：
+	int func(int a = 10 ,int b = 20);//声明
+	int func(int a = 10 ,int b = 30)//不论声明和实现中的形参的默认参数是否相等，都会造成歧义因此，此时实现不能有默认参数
+	{
+	return a+b; 
+	}*/
+int func(int a, int b = 20, int c = 30) {
+	return a + b + c;
+}
+int main()
+{
+	cout << func(10) << endl;
+	cout << func(10, 50) << endl;
+	system("pause");
+	return 0;
+}

@@ -5,17 +5,37 @@ int* func()
 	int* p = new int(10);
 	return p;
 }
+int* func2()
+{
+	//开辟10个整形的内存空间
+	int* p = new int[10];//开辟完连续空间后，返回的是数组的首元素地址
+
+	for (int i = 0; i < 10; i++)
+	{
+		p[i] = i + 100;
+	}
+	return p;
+}
 
 int main()
 {
-	//在堆区开辟空间
-	int* p = func();
-	cout << *p << endl;
-	cout << *p << endl;
+	////1.在堆区开辟空间
+	//int* p = func();
+	//cout << *p << endl;
+	//cout << *p << endl;
 
-	//删除开辟的空间
-	delete p;
-	cout << *p << endl;
+	////删除开辟的空间
+	//delete p;
+	//cout << *p << endl;
+
+	//2.
+	int* o = func2();
+	for (int i = 0; i < 10; i++)
+	{
+		cout << o[i] << endl;
+	}
+	delete[] o;
+	
 	system("pause");
 	return 0;
 }

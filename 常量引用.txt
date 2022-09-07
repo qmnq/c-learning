@@ -1,0 +1,45 @@
+#include<iostream>
+using namespace std;
+//常量引用
+
+
+//int main()
+//{
+//
+//	//int a = 10;//a是局部变量，放在栈区，而10是一个自变量是不可以直接引用的
+//
+//	//int& ret = a;
+//	// 
+//	//但不能：int &ret = 10;//引用必须引一块合法的内存空间
+//
+//	//但是加上const 之后 编译器将代码修改为 int tem = 10;int& ret =temp;
+//	const int& ret = 10;
+//	/*注意：这里引用了一块临时的空间ret 但是是找不到原名的，（原名是编译器帮忙已经起好了的）这里只能使用ret这个别名*/
+//	//ret = 20;//在int前面加const之后，就变为只读，不可以再修改值！
+//	
+//	system("pause");
+//	return 0;
+//}
+
+//2.使用场景：用来修饰形参，防止误操作
+
+
+//打印数据函数
+void showValue(int& val)
+{
+	val = 1000;//由于是引用传参，故main函数里的值一样会被改变
+	cout << "val = " << val << endl;
+}
+void showValue(const int& val)//因此可以添加一个const修饰int这样之就不可以被修改了！
+{
+	//val = 1000;//由于是引用传参，故main函数里的值一样会被改变
+	cout << "val = " << val << endl;
+}
+int main()
+{
+	int a = 100;
+	showValue(a);
+
+	system("pause");
+	return 0;
+}

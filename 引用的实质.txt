@@ -1,0 +1,21 @@
+#include<iostream>
+using namespace std;
+
+//发现是引用，转化为 int* const ret = &a;
+void func(int& ret)
+{
+	ret = 100;//ret是引用，转化为 *ret = 100;
+}
+int main()
+{
+	int a = 10;
+
+	//自动转换为：int *const ret  = &a;指针常量是指针指向不可改，也说明为什么引用不可更改
+	int& ret = a;
+	ret = 20;//内部发现ret是引用，自动帮我们转化为：*ret = 20;
+
+	cout << "a:" << a << endl;
+	cout << "ret:" << ret << endl;
+	system("pause");
+	return 0;
+}

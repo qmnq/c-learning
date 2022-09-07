@@ -1,0 +1,31 @@
+#include<iostream>
+using namespace std;
+//引用：给变量起别名。
+//语法：数据类型 & 别名 = 原名；
+
+/*别名的使用的注意事项：
+	1. 引用必须要初始化
+		int &b;//错误
+	2.引用一旦初始化后，就不可以更改了！
+		int a = 10;
+		int c = 20;
+		int &b = a;
+		int &b = c;//错误
+		*/
+int main()
+{
+	int a = 10;
+	int& b = a;//b是a的引用
+	int* c = &a;
+
+	cout << &b << endl;
+	cout << &a << endl;
+	cout << &c << endl;
+/*输出为：000000D7805CFB14
+		  000000D7805CFB14
+		  000000D7805CFB58
+	因此：b仅仅是a的别名，不重新开辟空间占用内存！
+*/
+	system("pause");
+	return 0;
+}
