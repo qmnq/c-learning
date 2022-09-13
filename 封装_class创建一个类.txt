@@ -1,0 +1,31 @@
+#include<iostream>
+using namespace std;
+//设计一个圆类,并且求出圆的周长
+//圆周长的公式：2Π * 半径
+const double PI = 3.14;
+
+//class 代表设计一个类，类的后边紧跟着的就是类的名称
+
+class Circle 
+{
+	//访问权限
+	//公共权限
+public:
+
+	//圆的属性
+	int m_r;/*半径*/
+	
+	//圆的行为
+	double Calculate()
+	{
+		return 2 * PI * m_r;
+	}
+};
+int main()
+{
+	Circle a;
+	a.m_r = 10;
+	cout << a.Calculate() << endl;
+	system("pause");
+	return 0;
+}
