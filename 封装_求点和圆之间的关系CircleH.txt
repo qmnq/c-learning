@@ -1,0 +1,26 @@
+#pragma once
+#include<iostream>
+using namespace std;
+#include"Point.h"
+
+//设置圆类（半径，圆心）
+class Circle
+{
+public:
+	
+	//设置半径R
+	void SetC_r(int r);
+	
+	//获取半径
+	int GetC_r();
+	
+	//设置圆心
+	void SetCenter(Point center);
+	
+	//获取圆心
+	Point GetCenter();
+private:
+	
+	int R;//半径
+	Point m_Center;//圆心
+};

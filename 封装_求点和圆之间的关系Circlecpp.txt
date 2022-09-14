@@ -1,0 +1,25 @@
+#include"Circle.h"
+
+//设置圆类（半径，圆心）
+
+//设置半径R
+void Circle::SetC_r(int r)
+{
+	R = r;
+}
+	
+//获取半径
+int Circle::GetC_r()
+{
+	return R;
+}
+//设置圆心
+void Circle::SetCenter(Point center)
+{
+	m_Center = center;
+}
+//获取圆心
+Point Circle::GetCenter()
+{
+	return m_Center;
+}

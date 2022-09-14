@@ -1,0 +1,113 @@
+#include<iostream>
+using namespace std;
+#include"Circle.h"
+#include"Point.h"
+/*练习案例1：
+	求点与圆之间的关系：
+		圆内
+		圆外
+		圆上
+*/
+//class Point//点类
+//{
+//public:
+//	//设置x
+//	void SetP_x(int x)
+//	{
+//		P_x = x;
+//	}
+//	//设置y
+//	void SetP_y(int y)
+//	{
+//		P_y = y;
+//	}
+//	//获取x;
+//	int GetP_x()
+//	{
+//		return P_x;
+//	}
+//	//获取y
+//	int GetP_y()
+//	{
+//		return P_y;
+//	}
+//
+//private:
+//	int P_x;
+//	int P_y;
+//};
+
+//设置圆类（半径，圆心）
+//class Circle
+//{
+//public:
+//	
+//	//设置半径R
+//	void SetC_r(int r)
+//	{
+//		R = r;
+//	}
+//	
+//	//获取半径
+//	int GetC_r()
+//	{
+//		return R;
+//	}
+//	//设置圆心
+//	void SetCenter(Point center)
+//	{
+//		m_Center = center;
+//	}
+//	//获取圆心
+//	Point GetCenter()
+//	{
+//		return m_Center;
+//	}
+//private:
+//	
+//	int R;//半径
+//	Point m_Center;//圆心
+//};
+
+//判断圆和点之间的关系的函数
+void isInCircle(Circle &c,Point &p)//引用传参
+{
+	//计算两点之间距离的平方
+	int distance = 
+		(c.GetCenter().GetP_x() - p.GetP_x())* (c.GetCenter().GetP_x() - p.GetP_x()) +
+		(c.GetCenter().GetP_y() - p.GetP_y()) * (c.GetCenter().GetP_y() - p.GetP_y());
+	//计算半径的平方
+		int rDistance = c.GetC_r() * c.GetC_r();
+	//判断关系
+		if (rDistance == distance)
+		{
+			cout << "点在圆上" << endl;
+		}
+		else if (rDistance < distance)
+		{
+			cout << "点在圆外" << endl;
+		}
+		else
+		{
+			cout << "点在圆内" << endl;
+		}
+
+}
+int main() {
+	//创建圆
+	Circle c;
+	c.SetC_r(10);
+	Point center;//创建圆心点
+	center.SetP_x(10);
+	center.SetP_y(0);
+	c.SetCenter(center);//将圆心点坐标传入圆
+
+	//创建点
+	Point p;
+	p.SetP_x(10);
+	p.SetP_y(9);
+
+	isInCircle(c, p);
+	system("pause");
+	return 0;
+}

@@ -1,0 +1,24 @@
+#include"Point.h"
+//Point::表示Point作用域下的函数
+	
+//设置x
+void Point::SetP_x(int x)
+{
+	P_x = x;
+}
+//设置y
+void Point::SetP_y(int y)
+{
+	P_y = y;
+}
+//获取x;
+int Point::GetP_x()
+{
+	return P_x;
+}
+//获取y
+int Point::GetP_y()
+{
+	return P_y;
+}
+

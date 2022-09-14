@@ -1,0 +1,23 @@
+#pragma once
+#include<iostream>
+using namespace std;
+
+class Point//点类
+{
+public:
+	//设置x
+	void SetP_x(int x);
+	
+	//设置y
+	void SetP_y(int y);
+	
+	//获取x;
+	int GetP_x();
+	
+	//获取y
+	int GetP_y();
+
+private:
+	int P_x;
+	int P_y;
+};
