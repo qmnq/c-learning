@@ -1,0 +1,91 @@
+#include<iostream>
+using namespace std;
+
+//1.构造函数的分类和调用
+//两种分类:
+	//按参数分类：有参构造 和 无参构造
+	//按类型分类：普通构造 和 拷贝构造
+
+//三种调用方式：
+//		括号法、显示法、隐式转换法
+class Person
+{
+public:	
+	//构造函数
+	Person()//普通构造函数
+	{
+		cout << "Person无参（默认）的构造函数调用" << endl;
+	}
+
+	Person(int a)//普通构造函数
+	{
+		age = a;
+		cout << "Person的有参构造函数调用" << endl;
+	}
+
+	//拷贝构造函数:
+	//由于是拷贝a的所有成员内容到自己身上，因此不能修改a的成员属性（前面加const）
+	//由于是引用传参，因此需要在a的前面加 ‘&’
+	Person(const Person &a)
+	{
+		//将传入的人身上的所有属性，拷贝到我身上
+		cout << "Person的拷贝构造函数调用" << endl;
+		age = a.age;
+	}
+
+	~Person()
+	{
+		cout << "~Person 析构函数的调用" << endl;
+	}
+
+	int age;
+
+};
+
+
+//调用
+
+void test01()
+{
+	//1、括号法：
+	Person p1;//默认构造函数的调用方法
+	Person p2(10);//调用有参构造
+
+		//如何用括号法调用拷贝构造函数
+	Person p3(p2);//将p2传进去就行
+
+	//*注意事项1：
+	//调用构造函数时候，不要加'（）'
+	//因为下面这行代码，编译器会认为是一个函数的声明,Person是函数的类型，因此不会创建对象
+	//Person p1();
+
+	/*cout << "p2 的年龄：" << p2.age << endl;
+	cout << "p3 的年龄：" << p3.age << endl;*/
+	
+	//2.显示法
+	//Person p1;//默认构造
+	//Person p2 = Person(10);//调用有参构造
+	////拷贝构造调用：
+	//Person p3 = Person(p2);
+
+	//Person(10);//匿名对象，特点：当前置性结束后，系统会立即回收掉匿名对象
+	//cout<<"aaaaa"<<endl;//由上一行和这一行代码可知：匿名会立刻被回收，而不是待函数调用完之后才会回收
+
+	//注意事项2：
+		//**不要用拷贝函数初始化匿名对象,因为编译器会认为是一个对象声明即	Person (p3) ==  Person p3   重定义.如：
+	//Person(p3);
+
+	//3、隐式转换法
+	Person p4 = 10;//相当于写了一个		Person p4 = Person(10);
+	Person p5 = p4;//拷贝
+	
+}
+
+
+int main()
+{
+	test01();
+
+	system("pause");
+	return 0;
+}
