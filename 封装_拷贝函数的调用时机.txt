@@ -1,0 +1,86 @@
+#include<iostream>
+using namespace std;
+
+//拷贝函数的使用时机
+	//1.使用已经创建完毕的对象来初始化一个新的对象
+	//2.值传递的方式给函数参数传值
+	//3.以值方式返回局部对象
+
+class Person
+{
+public:
+	Person()
+	{
+		cout << "Person 默认构造函数的调用" << endl;
+	}
+
+	Person(int age)
+	{
+		cout << "Person 有参构造函数的调用" << endl;
+		m_Age = age;
+	}
+
+	Person(const Person &p)
+	{
+		cout << "Person 拷贝构造函数的调用" << endl;
+		m_Age = p.m_Age;
+	}
+
+	~Person()
+	{
+		cout << "Person 析构函数调用" << endl;
+	}
+	int m_Age;
+};
+
+//1.使用已经创建完毕的对象来初始化一个新的对象
+//void test01()
+//{
+//	Person p1(20);
+//	Person p2(p1);
+//
+//	cout << "p2 的年龄为：" << p2.m_Age << endl;
+//}
+
+//2.值传递的方式给函数参数传值
+//void dot(Person p)//由于发生值传递方式给函数传递，因此这儿	Person p 发生了拷贝构造
+//{
+//	//当dot 函数调用结束的时候发生了第一次的：Person 析构函数调用
+//}
+//
+//void test02()
+//{
+//	Person p;//首先会打印：Person 默认构造函数的调用
+//	dot(p);
+//	/*	Person 默认构造函数的调用
+//		Person 拷贝构造函数的调用
+//		Person 析构函数调用
+//		Person 析构函数调用
+//	*/
+//
+//	//当test02函数调用结束的时候，Person p 会最后一次调用析构函数
+//}
+
+//3.以值方式返回局部对象
+
+Person dot2()
+{
+	Person p1;//由于此处是局部变量，在函数调用结束的时候局部变量会被销毁
+	return p1;//因此当返回值的时候并不是返回的p1，而是将属性拷贝下来，返回到  test03 函数中
+}
+void test03()
+{
+	Person p = dot2();//这里不会将 dot2 里 p1 的值返回，而是调用拷贝函数，将p1的值拷贝到p里面
+	/*	Person 默认构造函数的调用
+		Person 拷贝构造函数的调用
+		Person 析构函数调用
+		Person 析构函数调用
+	*/
+}
+int main()
+{
+	test03();
+	system("pause");
+	return 0;
+
+} 

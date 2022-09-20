@@ -1,0 +1,54 @@
+#include<iostream>
+using namespace std;
+//深拷贝和浅拷贝
+//浅拷贝：简单的赋值拷贝操作
+//深拷贝：在堆区重新开辟申请一块空间，进行拷贝操作
+//故：若属性有在堆区开辟的，需要自己提供拷贝构造函数防止浅构造
+class Person
+{
+public:
+	Person()
+	{
+		cout << "Person 的默认调用" << endl;
+	}
+	Person(int age, int height)
+	{
+		m_height = new int(height);//new一个 int,返回的就是int *
+
+		m_Age = age;
+		cout << "Person 的有参调用" << endl;
+	}
+	Person(const Person& p)//默认构造只会简单赋值构造，因此会出翔两个身高指向同一块堆区的现象
+							 //但到了析构函数释放空间时，会出现其中一个非法访问（空间已经被另一个释放掉了）
+	{
+		cout << "Person 的拷贝构造函数调用" << endl;
+		m_Age = p.m_Age;
+		m_height = new int(*p.m_height);
+	}
+	~Person()
+	{
+		if (m_height != NULL)
+		{
+			delete m_height;
+			m_height = NULL;
+		}
+		cout << "析构函数的调用" << endl;
+	}
+	int m_Age;
+	int* m_height;
+};
+void test01()
+{
+	Person p1(18,160);
+	cout << "p1 的年龄为：" << p1.m_Age <<"p1 的身高："<<*p1.m_height<< endl;
+	Person p2(p1);
+	cout << "p2 的年龄为：" << p2.m_Age << endl;
+}
+int main()
+{
+	
+	test01();
+	system("pause");
+	return 0;
+
+} 
